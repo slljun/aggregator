@@ -1,0 +1,164 @@
+{
+  "sites": [
+    {
+      "name": "frnhk1",
+      "subscribe": [
+        "https://cf.frnhk.xyz/s/a2bcb515d0fa68c73d65342d9c96b95b"
+      ],
+      "push_to": [
+        "default"
+      ]
+    },
+    {
+      "name": "wugui",
+      "subscribe": [
+        "https://1.14.154.150:43443/wuguisub?token=dc8bf6b850affc88911856549739a637"
+      ],
+      "push_to": [
+        "default"
+      ]
+    },
+    {
+      "name": "louwang1",
+      "subscribe": [
+        "https://vv.louwangzhiyu.org/api/v1/client/subscribe?token=894e15de4ed8988c3ee40a8144cfc5b2"
+      ],
+      "push_to": [
+        "default"
+      ]
+    },
+    {
+      "name": "fankeyun1",
+      "subscribe": [
+        "https://www.fankeyundingyue.space/fckwec/vip/client/subscribe?token=441cc375214855f81deaae567cbc3184"
+      ],
+      "push_to": [
+        "default"
+      ]
+    },
+    {
+      "name": "fankeyun2",
+      "subscribe": [
+        "https://www.fankeyundingyue.space/fckwec/vip/client/subscribe?token=96d9f83e02b7a1925bd0de14c46e92e2"
+      ],
+      "push_to": [
+        "default"
+      ]
+    },
+    {
+      "name": "louwang2",
+      "subscribe": [
+        "https://vv.louwangzhiyu.org/api/v1/client/subscribe?token=e219109f5344ca191d702fdf7e686466"
+      ],
+      "push_to": [
+        "default"
+      ]
+    },
+    {
+      "name": "yywhale",
+      "subscribe": [
+        "https://www.yywhale.com/api/v1/client/subscribe?token=d01ceee2038cbb016e9f4461b2bfa680"
+      ],
+      "push_to": [
+        "default"
+      ]
+    },
+    {
+      "name": "frnhk2",
+      "subscribe": [
+        "https://cf.frnhk.xyz/s/ac02f0a589ee8e89c0cb2a798b712738"
+      ],
+      "push_to": [
+        "default"
+      ]
+    },
+    {
+      "name": "v2raydog",
+      "subscribe": [
+        "https://raw.githubusercontent.com/v2raydog-node/free-nodes/main/clash.yaml"
+      ],
+      "push_to": [
+        "default"
+      ]
+    },
+    {
+      "name": "zhuhai",
+      "subscribe": [
+        "https://raw.githubusercontent.com/zhuhaiuk/free-nodes/main/clash_config.yaml"
+      ],
+      "push_to": [
+        "default"
+      ]
+    }
+  ],
+  "crawl": {
+    "enable": true,
+    "include_nodes": true,
+    "telegram": {
+      "enable": true,
+      "pages": 2,
+      "channels": {
+        "freeVPNjd": {
+          "push_to": [
+            "default"
+          ]
+        },
+        "freenodedaily": {
+          "push_to": [
+            "default"
+          ]
+        },
+        "Qun521": {
+          "push_to": [
+            "default"
+          ]
+        }
+      }
+    },
+    "github": {
+      "enable": true,
+      "pages": 1
+    },
+    "google": {
+      "enable": false
+    },
+    "yandex": {
+      "enable": false
+    },
+    "twitter": {
+      "enable": false
+    }
+  },
+  "groups": {
+    "default": {
+      "emoji": true,
+      "list_only": true,
+      "targets": {
+        "clash": "clash",
+        "singbox": "singbox",
+        "v2ray": "v2ray"
+      }
+    }
+  },
+  "storage": {
+    "engine": "gist",
+    "items": {
+      "clash": {
+        "username": "slljun",
+        "gist_id": "b688bb7a5c2a5328c1d50b3aad5c95aa",
+        "filename": "clash.yaml"
+      },
+      "singbox": {
+        "username": "slljun",
+        "gist_id": "b688bb7a5c2a5328c1d50b3aad5c95aa",
+        "filename": "singbox.json"
+      },
+      "v2ray": {
+        "username": "slljun",
+        "gist_id": "b688bb7a5c2a5328c1d50b3aad5c95aa",
+        "filename": "v2ray.txt"
+      }
+    }
+  },
+  "delay": 5000
+}
