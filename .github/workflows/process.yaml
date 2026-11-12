@@ -1,19 +1,26 @@
 name: Process
 on:
+  # weekly on Mondays at 00:00 UTC (08:00 CST) - direct-crawl batch
+  # (replaces the collect.py airport run: airport registration is dead,
+  # 0 airports found; process.py crawls Telegram/GitHub public subs instead)
   schedule:
-    - cron: "05 03 * * *"
-    - cron: "05 11 * * *"
+    - cron: "0 0 * * 1"
   workflow_dispatch:
+
+concurrency:
+  group: ${{ github.repository }}
+  cancel-in-progress: true
 
 env:
   # time zone
   TZ: Asia/Shanghai
 
-  # network proxy aggregate config
-  SUBSCRIBE_CONF: ${{ secrets.SUBSCRIBE_CONF }}
+  # process.py config file, committed in this repo (no secrets inside:
+  # public Gist id + public subscription URLs + public Telegram channels)
+  SUBSCRIBE_CONF: subscribe/config.json
 
-  # token
-  PUSH_TOKEN: ${{ secrets.PUSH_TOKEN }}
+  # token used to push results to the Gist (same PAT as the collect run)
+  PUSH_TOKEN: ${{ secrets.GIST_PAT }}
 
   # not check connective
   SKIP_ALIVE_CHECK: ${{ vars.SKIP_ALIVE_CHECK }}
@@ -21,10 +28,10 @@ env:
   # skip remark
   SKIP_REMARK: ${{ vars.SKIP_REMARK }}
 
-  # workflow mode
+  # workflow mode: 0 = crawl + aggregate
   WORKFLOW_MODE: ${{ vars.WORKFLOW_MODE }}
 
-  # include spwcial protocols, such vless hysteria2 and hysteria
+  # include special protocols, such as vless hysteria2 and hysteria
   ENABLE_SPECIAL_PROTOCOLS: ${{ vars.ENABLE_SPECIAL_PROTOCOLS }}
 
 jobs:
