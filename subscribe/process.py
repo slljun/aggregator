@@ -297,6 +297,11 @@ def aggregate(args: argparse.Namespace) -> None:
                 with open(filepath, "r", encoding="utf8") as f:
                     content = f.read()
 
+                # yaml-cpp (subconverter) emits !<str> tags for numeric-looking
+                # strings (e.g. password: !<str> 12012); strict parsers like
+                # Loon reject the tag and fail the whole file, so quote it
+                content = re.sub(r"!<str>[ ]+([^,} ]+)", lambda m: '"' + m.group(1) + '"', content)
+
                 mixed = target == "v2ray" or target == "mixed" or "ss" in target
                 if mixed and not utils.isb64encode(content=content):
                     # base64 encode
