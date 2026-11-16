@@ -19,7 +19,9 @@ class QuotedStr(str):
 
 
 def quoted_scalar(dumper: object, data: object) -> object:
-    return dumper.represent_scalar("tag:yaml.org,2002:str", data, style='"')
+    node = dumper.represent_scalar("tag:yaml.org,2002:str", data)
+    node.style = '"'
+    return node
 
 
 def wrap(text: object) -> str:
