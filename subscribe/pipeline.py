@@ -2,6 +2,7 @@
 
 import os
 import random
+import re
 import subprocess
 import time
 
@@ -231,4 +232,9 @@ def convert_proxies(
     if not os.path.exists(converted) or not os.path.isfile(converted):
         return ""
     with open(converted, "r", encoding="utf8") as handle:
-        return handle.read()
+        content = handle.read()
+    # yaml-cpp (subconverter) emits !<str> tags for numeric-looking strings
+# (e.g. password: !<str> 12012); strict parsers like Loon reject the tag
+# and fail the whole file, so quote the value instead
+content = re.sub(r"!<str>\s+([^,\s}]+)", r"'\1'", content)
+return content
