@@ -234,7 +234,7 @@ def convert_proxies(
     with open(converted, "r", encoding="utf8") as handle:
         content = handle.read()
     # yaml-cpp (subconverter) emits !<str> tags for numeric-looking strings
-# (e.g. password: !<str> 12012); strict parsers like Loon reject the tag
-# and fail the whole file, so quote the value instead
-content = re.sub(r"!<str>\s+([^,\s}]+)", r"'\1'", content)
-return content
+    # (e.g. password: !<str> 12012); strict parsers like Loon reject the tag
+    # and fail the whole file, so quote the value instead
+    content = re.sub(r"!<str>[ ]+([^,} ]+)", lambda m: '"' + m.group(1) + '"', content)
+    return content
