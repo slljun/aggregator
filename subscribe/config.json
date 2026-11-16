@@ -89,6 +89,33 @@
       "push_to": [
         "default"
       ]
+    },
+    {
+        "name": "awesomevpn",
+      "subscribe": [
+          "https://raw.githubusercontent.com/awesome-vpn/awesome-vpn/master/clash.yaml"
+      ],
+      "push_to": [
+          "default"
+      ]
+    },
+    {
+        "name": "au1rxx",
+      "subscribe": [
+          "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml"
+      ],
+      "push_to": [
+          "default"
+      ]
+    },
+    {
+        "name": "ermaozi",
+      "subscribe": [
+          "https://raw.githubusercontent.com/ermaozi/get_subscribe/main/subscribe/clash.yml"
+      ],
+      "push_to": [
+          "default"
+      ]
     }
   ],
   "crawl": {
