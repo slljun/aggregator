@@ -211,6 +211,13 @@ def aggregate(args: argparse.Namespace) -> None:
 
         arrays = [datasets.get(x, []) for x in v]
         proxies = list(itertools.chain.from_iterable(arrays))
+        # 2026-11-20：去掉“协议+一串数字”命名的节点（如 VLESS-1882484918）。
+        # 这类节点来自免费采集源，实测基本全灭（Loon 全红），只占位置。
+        _numeric_name = re.compile(r"^(?:SHADOWSOCKS|VLESS|TROJAN|VMESS|HYSTERIA2|TUIC|ANYTLS|SS)-\d+$")
+        _before = len(proxies)
+        proxies = [p for p in proxies if not (isinstance(p, dict) and _numeric_name.match(str(p.get("name", "")).strip()))]
+        if len(proxies) != _before:
+            logger.info(f"dropped {_before - len(proxies)} numeric-named nodes, group=[{k}]")
         if len(proxies) == 0:
             logger.error(f"exit because cannot fetch any proxy node, group=[{k}]")
             continue
